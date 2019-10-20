@@ -13,6 +13,9 @@ class MapaPage extends StatefulWidget {
 class _MapaPageState extends State<MapaPage> {
   final map = new MapController();
 
+  String _titulo = 'Parque Nacional del Íbera';
+  String _botonNombre = 'VER FOCOS';
+
   String tipoMapa = 'streets';
 
   @override
@@ -87,7 +90,7 @@ class _MapaPageState extends State<MapaPage> {
         children: <Widget>[
           const SizedBox(height: 30),
           Text(
-            'Parque Nacional del Íbera',
+            _titulo,
             style: TextStyle(
               fontSize: 20,
             ),
@@ -100,7 +103,7 @@ class _MapaPageState extends State<MapaPage> {
             height: 50,
             child: Center(
               child: Text(
-                'VER FOCOS',
+                _botonNombre,
                 style: TextStyle(fontSize: 20, color: Color.fromRGBO(255, 255, 255, 1)),
               ),
             ),
@@ -121,20 +124,87 @@ class _MapaPageState extends State<MapaPage> {
       context: context,
       builder: (BuildContext bc){
           return Container(
-            child: new Wrap(
-              children: <Widget>[
-                new ListTile(
-                  leading: new Icon(Icons.music_note),
-                  title: new Text('Music'),
-                  onTap: () => {}          
-                ),
-                new ListTile(
-                  leading: new Icon(Icons.videocam),
-                  title: new Text('Video'),
-                  onTap: () => {},          
-                ),
-              ],
-            ),
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const SizedBox(height: 30),
+                  Text(
+                    _titulo,
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                  RaisedButton.icon(
+                    onPressed: () => {},  
+                    icon: Icon(Icons.videocam), 
+                    label: Text('Terminal 905 - Foco 1', style: TextStyle(fontSize: 20)),    
+                    color: Color.fromRGBO(255, 255, 255, 1), 
+                  ),
+                  Text("28º16'19''S, 36º16'33'' W"),
+                  Container(
+                    margin: const EdgeInsets.all(10.0),
+                    width: 350.0,
+                    height: 72.0,
+                    child: FlatButton(
+                      onPressed: () => {},
+                      child: Center(
+                        child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          const ListTile(
+                            leading: Icon(Icons.album),
+                            title: Text('Terminal 905 - Foco 1', style: TextStyle(fontSize: 20)),
+                            subtitle: Text("28º16'19''S, 36º16'33'' W"),
+                          ),
+                        ],
+                      ),
+                      )
+                    ),
+                  ),
+                   Container(
+                    margin: const EdgeInsets.all(10.0),
+                    width: 350.0,
+                    height: 72.0,
+                    child: FlatButton(
+                      onPressed: () => {},
+                      child: Center(
+                        child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          const ListTile(
+                            leading: Icon(Icons.album),
+                            title: Text('Terminal 905 - Foco 1', style: TextStyle(fontSize: 20)),
+                            subtitle: Text("28º16'19''S, 36º16'33'' W"),
+                          ),
+                        ],
+                      ),
+                      )
+                    ),
+                  ),
+                   Container(
+                    width: 350.0,
+                    height: 72.0,
+                    child: FlatButton(
+                      onPressed: () => {},
+                      child: Center(
+                        child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          const ListTile(
+                            leading: Icon(Icons.album),
+                            title: Text('Terminal 905 - Foco 1', style: TextStyle(fontSize: 20)),
+                            subtitle: Text("28º16'19''S, 36º16'33'' W"),
+                          ),
+                        ],
+                      ),
+                      )
+                    ),
+                  )
+                ],
+              )
+            )
           );
         }
       );
