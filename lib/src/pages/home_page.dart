@@ -4,6 +4,7 @@ import 'dart:async';
 
 
 import 'package:qr_reader_app/src/pages/mapa_page.dart';
+import 'package:qr_reader_app/src/pages/mapas_page.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -26,11 +27,6 @@ class _HomePageState extends State<HomePage> {
           fit: BoxFit.cover,
         );
         Future.delayed(const Duration(seconds: 3), () => "3");
-    return  FadeInImage(
-          image: AssetImage('assets/1. APP – 1.png'),
-          placeholder: AssetImage('assets/img/loading.gif'),
-          fadeInDuration: Duration(microseconds: 1500),
-          fit: BoxFit.cover,
-        );
+    return  MapaPage();
   }
 }

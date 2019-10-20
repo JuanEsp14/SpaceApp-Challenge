@@ -67,10 +67,8 @@ class _MapaPageState extends State<MapaPage> {
           height: 100.0,
           point: LatLng(-28.30,-57.30),
           builder: (context) => Container(
-            child: Icon( 
-              Icons.location_on, 
-              size: 45.0,
-              color: Theme.of(context).accentColor,  
+            child: Image( 
+              image: AssetImage('assets/reporte_incendio.png')
             ),
           )
         )
@@ -136,13 +134,6 @@ class _MapaPageState extends State<MapaPage> {
                     ),
                   ),
                   const SizedBox(height: 30),
-                  RaisedButton.icon(
-                    onPressed: () => {},  
-                    icon: Icon(Icons.videocam), 
-                    label: Text('Terminal 905 - Foco 1', style: TextStyle(fontSize: 20)),    
-                    color: Color.fromRGBO(255, 255, 255, 1), 
-                  ),
-                  Text("28º16'19''S, 36º16'33'' W"),
                   Container(
                     margin: const EdgeInsets.all(10.0),
                     width: 350.0,
@@ -154,7 +145,27 @@ class _MapaPageState extends State<MapaPage> {
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           const ListTile(
-                            leading: Icon(Icons.album),
+                            leading: Image(image: AssetImage('assets/reporte_incendio.png')),
+                            title: Text('Terminal 905 - Foco 1', style: TextStyle(fontSize: 20)),
+                            subtitle: Text("28º16'19''S, 36º16'33'' W"),
+                          ),
+                        ],
+                      ),
+                      )
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.all(10.0),
+                    width: 350.0,
+                    height: 72.0,
+                    child: FlatButton(
+                      onPressed: () => {},
+                      child: Center(
+                        child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          const ListTile(
+                            leading: Image(image: AssetImage('assets/reporte_incendio.png')),
                             title: Text('Terminal 905 - Foco 1', style: TextStyle(fontSize: 20)),
                             subtitle: Text("28º16'19''S, 36º16'33'' W"),
                           ),
@@ -174,7 +185,7 @@ class _MapaPageState extends State<MapaPage> {
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           const ListTile(
-                            leading: Icon(Icons.album),
+                            leading: Image(image: AssetImage('assets/sin_reporte.png')),
                             title: Text('Terminal 905 - Foco 1', style: TextStyle(fontSize: 20)),
                             subtitle: Text("28º16'19''S, 36º16'33'' W"),
                           ),
@@ -183,25 +194,22 @@ class _MapaPageState extends State<MapaPage> {
                       )
                     ),
                   ),
-                   Container(
-                    width: 350.0,
-                    height: 72.0,
-                    child: FlatButton(
-                      onPressed: () => {},
-                      child: Center(
-                        child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          const ListTile(
-                            leading: Icon(Icons.album),
-                            title: Text('Terminal 905 - Foco 1', style: TextStyle(fontSize: 20)),
-                            subtitle: Text("28º16'19''S, 36º16'33'' W"),
-                          ),
-                        ],
+                  AnimatedContainer(
+                    duration: Duration(seconds: 2),
+                    curve: Curves.fastOutSlowIn,
+                    width: 250,
+                    height: 50,
+                    child: Center(
+                      child: Text(
+                        'SELECCIONAR UN ZONA',
+                        style: TextStyle(fontSize: 20, color: Color.fromRGBO(255, 255, 255, 1)),
                       ),
-                      )
                     ),
-                  )
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).accentColor,
+                      borderRadius: BorderRadius.circular(25.0),
+                    ),
+                  ),
                 ],
               )
             )
