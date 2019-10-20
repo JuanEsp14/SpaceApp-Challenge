@@ -23,13 +23,23 @@ class _MapaPageState extends State<MapaPage> {
 
     final ScanModel scan = ModalRoute.of(context).settings.arguments;
 
+    if(_titulo == 'Parque Nacional del Íbera'){
+        return Scaffold(
+        appBar: null,
+        body: _crearFlutterMap(scan),
+        bottomNavigationBar: BottomAppBar(
+          color: Colors.white,
+          child:_crearFloatingActionButton(context),
+        ),
+      );
+    }
     return Scaffold(
-      appBar: null,
-      body: _crearFlutterMap(scan),
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.white,
-        child:_crearFloatingActionButton(context),
-      ),
+        appBar: null,
+        body: _crearFlutterMap(scan),
+        bottomNavigationBar: BottomAppBar(
+          color: Colors.white,
+          child:_crearFloatingActionButton2(context),
+        ),
       );
   }
   
@@ -109,8 +119,7 @@ class _MapaPageState extends State<MapaPage> {
   Widget _crearFloatingActionButton(BuildContext context) {
     return RaisedButton(
       onPressed: () {
-        _settingModalBottomSheet(context);
-        
+        _settingModalBottomSheet(context);     
         
       },
       child: Column(
@@ -147,6 +156,55 @@ class _MapaPageState extends State<MapaPage> {
     );
   }
 
+  Widget _crearFloatingActionButton2(BuildContext context) {
+    return RaisedButton(
+      onPressed: () {
+        switch (tipoMapa){
+          case 'streets': tipoMapa = 'dark'; break;
+          case 'dark': tipoMapa = 'light'; break;
+          case 'light': tipoMapa = 'outdoors'; break;
+          case 'outdoors': tipoMapa = 'satellite'; break;
+          default: tipoMapa = 'streets';
+        }
+
+        setState(() { });  
+        
+      },
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          const SizedBox(height: 30),
+          Text(
+            _titulo,
+            style: TextStyle(
+              fontSize: 20,
+            ),
+          ),
+          const SizedBox(height: 30),
+          AnimatedContainer(
+            duration: Duration(seconds: 2),
+            curve: Curves.fastOutSlowIn,
+            width: 250,
+            height: 50,
+            child: Center(
+              child: Text(
+                _botonNombre,
+                style: TextStyle(fontSize: 20, color: Color.fromRGBO(255, 255, 255, 1)),
+              ),
+            ),
+            decoration: BoxDecoration(
+              color: Theme.of(context).accentColor,
+              borderRadius: BorderRadius.circular(25.0),
+            ),
+          ),
+          const SizedBox(height: 30),
+        ],
+      ), 
+      color: Color.fromRGBO(255, 255, 255, 1),
+    );
+  }
+
+
   void _settingModalBottomSheet(context){
     showModalBottomSheet(
       context: context,
@@ -173,6 +231,8 @@ class _MapaPageState extends State<MapaPage> {
                         map.move(LatLng(-28.15,-57.22), 15);
                         Navigator.pop(context);
                         _titulo = 'Terminal 905 - Foco 1';
+                        _botonNombre = 'VER INFORMACIÓN';
+                        _crearFloatingActionButton2(context);
                         setState(() { });
                       },
                       child: Center(
@@ -197,7 +257,8 @@ class _MapaPageState extends State<MapaPage> {
                       onPressed: () {
                         map.move(LatLng(-28.00,-57.30), 15);
                         Navigator.pop(context);
-                        _titulo = 'Terminal 905 - Foco 1';
+                        _titulo = 'Terminal 907 - Foco 3';
+                        _botonNombre = 'VER INFORMACIÓN';
                         setState(() { });
                       },
                       child: Center(
@@ -222,7 +283,8 @@ class _MapaPageState extends State<MapaPage> {
                       onPressed: ()  {
                         map.move(LatLng(-28.30,-57.30), 15);
                         Navigator.pop(context);
-                        _titulo = 'Terminal 905 - Foco 1';
+                        _titulo = 'Terminal 906 - Foco 2';
+                        _botonNombre = 'VER INFORMACIÓN';
                         setState(() { });
                       },
                       child: Center(
