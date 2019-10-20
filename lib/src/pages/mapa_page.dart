@@ -43,7 +43,7 @@ class _MapaPageState extends State<MapaPage> {
       ),
       layers: [
         _crearMapa(),
-        _crearMarcadores(scan)
+        _crearMarcadores()
       ],
     );
   }
@@ -59,19 +59,49 @@ class _MapaPageState extends State<MapaPage> {
         );
   }
 
-  _crearMarcadores(ScanModel scan) {
+  _crearMarcadores() {
     return MarkerLayerOptions(
       markers: <Marker>[
+        Marker(
+          width: 100.0,
+          height: 100.0,
+          point: LatLng(-28.00,-57.30),
+          builder: (context) => Container(
+            child: Image( 
+              image: AssetImage('assets/reporte_incendio.png')
+            ),
+          )
+        ),
+        Marker(
+          width: 100.0,
+          height: 100.0,
+          point: LatLng(-28.00,-57.00),
+          builder: (context) => Container(
+            child: Image( 
+              image: AssetImage('assets/sin_reporte.png')
+            ),
+          )
+        ),
         Marker(
           width: 100.0,
           height: 100.0,
           point: LatLng(-28.30,-57.30),
           builder: (context) => Container(
             child: Image( 
+              image: AssetImage('assets/sin_reporte.png')
+            ),
+          )
+        ),
+        Marker(
+          width: 100.0,
+          height: 100.0,
+          point: LatLng(-28.15,-57.22),
+          builder: (context) => Container(
+            child: Image( 
               image: AssetImage('assets/reporte_incendio.png')
             ),
           )
-        )
+        ),
       ]
     );
   }
@@ -139,7 +169,12 @@ class _MapaPageState extends State<MapaPage> {
                     width: 350.0,
                     height: 72.0,
                     child: FlatButton(
-                      onPressed: () => {},
+                      onPressed: () {
+                        map.move(LatLng(-28.15,-57.22), 15);
+                        Navigator.pop(context);
+                        _titulo = 'Terminal 905 - Foco 1';
+                        setState(() { });
+                      },
                       child: Center(
                         child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -147,7 +182,7 @@ class _MapaPageState extends State<MapaPage> {
                           const ListTile(
                             leading: Image(image: AssetImage('assets/reporte_incendio.png')),
                             title: Text('Terminal 905 - Foco 1', style: TextStyle(fontSize: 20)),
-                            subtitle: Text("28º16'19''S, 36º16'33'' W"),
+                            subtitle: Text("28º16'19''S, 57º16'33'' W"),
                           ),
                         ],
                       ),
@@ -159,15 +194,20 @@ class _MapaPageState extends State<MapaPage> {
                     width: 350.0,
                     height: 72.0,
                     child: FlatButton(
-                      onPressed: () => {},
+                      onPressed: () {
+                        map.move(LatLng(-28.00,-57.30), 15);
+                        Navigator.pop(context);
+                        _titulo = 'Terminal 905 - Foco 1';
+                        setState(() { });
+                      },
                       child: Center(
                         child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           const ListTile(
                             leading: Image(image: AssetImage('assets/reporte_incendio.png')),
-                            title: Text('Terminal 905 - Foco 1', style: TextStyle(fontSize: 20)),
-                            subtitle: Text("28º16'19''S, 36º16'33'' W"),
+                            title: Text('Terminal 907 - Foco 3', style: TextStyle(fontSize: 20)),
+                            subtitle: Text("28º10'19''S, 57º22'33'' W"),
                           ),
                         ],
                       ),
@@ -179,15 +219,20 @@ class _MapaPageState extends State<MapaPage> {
                     width: 350.0,
                     height: 72.0,
                     child: FlatButton(
-                      onPressed: () => {},
+                      onPressed: ()  {
+                        map.move(LatLng(-28.30,-57.30), 15);
+                        Navigator.pop(context);
+                        _titulo = 'Terminal 905 - Foco 1';
+                        setState(() { });
+                      },
                       child: Center(
                         child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           const ListTile(
                             leading: Image(image: AssetImage('assets/sin_reporte.png')),
-                            title: Text('Terminal 905 - Foco 1', style: TextStyle(fontSize: 20)),
-                            subtitle: Text("28º16'19''S, 36º16'33'' W"),
+                            title: Text('Terminal 906 - Foco 2', style: TextStyle(fontSize: 20)),
+                            subtitle: Text("28º55'19''S, 57º60'33'' W"),
                           ),
                         ],
                       ),
@@ -197,7 +242,7 @@ class _MapaPageState extends State<MapaPage> {
                   AnimatedContainer(
                     duration: Duration(seconds: 2),
                     curve: Curves.fastOutSlowIn,
-                    width: 250,
+                    width: 350,
                     height: 50,
                     child: Center(
                       child: Text(
